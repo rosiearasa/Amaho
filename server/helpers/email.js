@@ -1,10 +1,10 @@
 import * as config from '../config.js'
 
-const style = `
-backgroundColor = #eeeee;
-padding: 20px;
-border-radius = 20px;
-`;
+const styles = {
+background : "#eeeee",
+padding:" 20px",
+borderradius : "20px"
+}
 
 export const emailTemplate = (email, content, replyTo, subject) =>{
     return {
@@ -18,7 +18,7 @@ export const emailTemplate = (email, content, replyTo, subject) =>{
                         Charset: "UTF-8",
                         Data: `
                         <html>
-                        <div style = "${{style}}">
+                        <div style = ${styles}>
                         <h1>Welcome to Amaho Home</h1>
                         ${content}
                         <p>&copy; ${new Date().getFullYear()}</p>
