@@ -26,7 +26,7 @@ const schema = new Schema({
 
     password: {
         type: String,
-        required:true,
+       // required:true, # Passport automatically checks this value- gets errors when saving with this set to required
         maxLength:256,
     },
     address:{type: String, default: ""},
@@ -40,7 +40,7 @@ const schema = new Schema({
     },
     enquiredProperties:[{type: ObjectId, ref: "Ad"}],
     wishlist: [{type: ObjectId, ref: "Ad"}],
-    resetCode: "",
+    resetCode:{type: String, default:""},
 
 }, 
 {timestamps: true}
