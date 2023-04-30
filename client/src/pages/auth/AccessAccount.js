@@ -5,20 +5,20 @@ import axios from "axios";
 import { useAuth } from "../../context/auth";
 
 
-export default function AccountActivate(){
+export default function AccessAccount(){
 
 const [auth, setAuth] = useAuth();
 const navigate = useNavigate()
 
 const {token} = useParams();
  useEffect(() =>{
-   if(token) requestActivation()
+   if(token) requestAccess()
 
  }, [token]);
 
- const requestActivation = async ()=>{
+ const requestAccess = async ()=>{
     try {
-        const {data} = await axios.post(`/register`, {token});
+        const {data} = await axios.post(`/access-account`, {resetCode: token});
         if(data.err){
             toast.error(data.error);
         }
@@ -27,7 +27,7 @@ const {token} = useParams();
             localStorage.setItem("auth", JSON.stringify(data));
             //save in context
             setAuth(data);
-            toast.success("successfully logged in. Welcome to Realisr App");
+            toast.success("Please Update Your Password in profile page");
             navigate("/");
         }
         

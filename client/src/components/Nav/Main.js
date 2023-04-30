@@ -1,5 +1,5 @@
-import React from "react";
-import { NavLink, useNavigationType } from "react-router-dom";
+
+import { NavLink } from "react-router-dom";
 import { useAuth} from "../../context/auth";
 import { useNavigate } from "react-router-dom";
 
@@ -15,23 +15,31 @@ const logout= () =>{
   navigate("/login")
 }
 
+const loggedIn = auth.user !== null && auth.token !== "" && auth.refreshToken !== "";
+
+
+
 
     return (
  <nav className="nav d-flex justfy-content-between lead">
   <NavLink className="nav-link" aria-current="page" to="/">
     Home
     </NavLink>
-
+ {! loggedIn ? <>
   <NavLink className="nav-link" to="/login">
     Login
   </NavLink>
   <NavLink className="nav-link" to="/register">
     Register
   </NavLink>
-  <div className="dropdown">
+  </>:(
+    ""
+  )}
+
+{ loggedIn?  <div className="dropdown">
     <li>
     <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-    User
+    {auth.user.name ? auth.user.name : auth.user.username}
   </a>
   <ul className="dropdown-menu">
     <li>
@@ -46,7 +54,7 @@ const logout= () =>{
 
     </li>
 
-  </div>
+  </div>: ("")}
 
    
 </nav>
