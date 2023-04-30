@@ -7,19 +7,21 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import { AuthProvider } from "./context/auth";
+import AccountActivate from "./pages/auth/AccountActivate";
 function App() {
   return (
 
    < BrowserRouter>
-   <Main/>
-   <Toaster/>
     
    <AuthProvider>
+   <Main/>
+   <Toaster/>
    <Routes>
 
     <Route path= "/" element={<Home/>}/>
     <Route path= "/login" element={<Login/>}/>
     <Route path= "/register" element={<Register/>}/>
+    <Route path= "/auth/account-activate/:token" element={<AccountActivate/>}/>
    </Routes>
    </AuthProvider>
    </BrowserRouter>
