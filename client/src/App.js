@@ -12,6 +12,8 @@ import AccountActivate from "./pages/auth/AccountActivate";
 import ForgotPassword from "./pages/auth/ForgotPassword";
 import AccessAccount from "./pages/auth/AccessAccount";
 import Dashboard from "./pages/user/Dashboard";
+import AdCreate from "./pages/user/Ad/AdCreate";
+import PrivateRoute from "./components/routes/PrivateRoute";
 
 
 function App() {
@@ -30,7 +32,13 @@ function App() {
     <Route path= "/auth/account-activate/:token" element={<AccountActivate/>}/>
     <Route path= "/auth/forgot-password" element={<ForgotPassword/>}/>
     <Route path= "/auth/access-account/:token" element={<AccessAccount/>}/>
-    <Route path= "/dashboard" element={<Dashboard/>}/>
+
+  //  protecting routes
+  <Route path = "/" element = {<PrivateRoute/>}>
+  <Route path= "dashboard" element={<Dashboard/>}/>
+    <Route path= "ad/create" element={<AdCreate/>}/>
+  </Route>
+
    </Routes>
    
    </AuthProvider>

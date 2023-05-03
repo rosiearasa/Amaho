@@ -3,7 +3,7 @@ import { useAuth } from "../../context/auth";
 import Sidebar from "../../components/Nav/Sidebar";
 
 export default  function  Dashboard(){
-    const [auth, setAuth] = useAuth();
+   
     return (
         <div>
             
