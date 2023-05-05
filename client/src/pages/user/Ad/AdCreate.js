@@ -30,7 +30,7 @@ export default  function  AdCreate(){
            <h1 className= "display-1 bg-primary text-light p-5">Ad Create</h1>
            <Sidebar/>
            <div className="d-flex justfiy-content-center align-items-center vh-100"
-           style={{marginTop: "-9%"}}>
+           style={{marginTop: "-16%"}}>
             <div className="col-lg-6">
             <button onClick= {handleAddListing} 
             className="btn btn-primary btn-lg col-12 p-5">
