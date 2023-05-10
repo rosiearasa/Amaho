@@ -3,6 +3,10 @@ import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import { GOOGLE_PLACES_KEY } from "../../config";
 import CurrencyInput from "react-currency-input-field"
 import ImageUpload from "./ImageUpload";
+import axios from "axios";
+import {Navigate, useNavigate} from "react-router-dom"
+import toast from "react-hot-toast"
+
 
 export default function AdForm ({action, type})  {
     const [ad, setAd] = useState({
@@ -11,14 +15,36 @@ export default function AdForm ({action, type})  {
         price:"",
         address:'',
         bedrooms:'',
-        carpack:'',
-        type:'',
+        carpark:'',
+        bathrooms:'',
         title:'',
         description:'',
         apartmentsize:'',
         loading:false,
+        type,
+        action,
         });
 
+const handleClick = async () =>{
+    try {
+        
+        setAd({...ad, loading: true});
+        const {data} = await axios.post('/ad', ad);
+        console.log("add create response =>", data)
+        if (data?.error){
+            toast.error(data.error);
+            setAd({...ad, loading: false});
+            Navigate("/dashboard")
+        }else{
+            toast.success("Ad created successfully");
+            setAd({...ad, loading: false});
+
+        }
+    } catch (error) {
+        
+    }
+
+ }
 return (
     <>
 
@@ -68,8 +94,8 @@ return (
  min  = "0"
  className="form-control mb-3"
  placeholder = "Enter number of garages"
- value = {ad.carpack}
- onChange={e => setAd({...ad, carpack:e.target.value})}
+ value = {ad.carpark}
+ onChange={e => setAd({...ad, carpark:e.target.value})}
  />
 
 <input 
@@ -95,7 +121,7 @@ return (
  onChange={e => setAd({...ad, description:e.target.value})}
  />
  
- <button className="btn btn-primary"> Submit</button>
+ <button onClick ={handleClick} className="btn btn-primary"> Submit</button>
 
 
  <pre>
