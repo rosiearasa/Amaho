@@ -39,9 +39,9 @@ export default  function  AdCreate(){
             {sell &&
              (
                 <div className="my-1">
-                    <button onClick={() => navigate('/ad/create/list/House')} 
+                    <button onClick={() => navigate('/ad/create/Sell/House')} 
                     className="btn btn-secondary p5 col-6">House</button>
-                    <button onClick={() => navigate('/ad/create/list/Apartment')} 
+                    <button onClick={() => navigate('/ad/create/Sell/Apartment')} 
                     className="btn btn-secondary p5 col-6">Apartment</button>
                 </div>
 

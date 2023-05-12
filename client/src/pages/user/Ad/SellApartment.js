@@ -2,7 +2,7 @@
 import AdForm from "../../../components/forms/AdForm";
 import Sidebar from "../../../components/Nav/Sidebar";
 
-export default  function  ListApartment(){
+export default  function  SellApartment(){
    
     return (
         <div>
@@ -10,7 +10,7 @@ export default  function  ListApartment(){
            <h1 className= "display-1 bg-primary text-light p-5">List Apartment</h1>
            <Sidebar/>
            <div className="container mt-2">
-            <AdForm action= "List" type= "Apartment"/>
+            <AdForm action= "Sell" type= "Apartment"/>
 
            </div>
            

@@ -4,7 +4,7 @@ import { GOOGLE_PLACES_KEY } from "../../config";
 import CurrencyInput from "react-currency-input-field"
 import ImageUpload from "./ImageUpload";
 import axios from "axios";
-import {Navigate, useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 import toast from "react-hot-toast"
 
 
@@ -24,6 +24,7 @@ export default function AdForm ({action, type})  {
         type,
         action,
         });
+const navigate = useNavigate();
 
 const handleClick = async () =>{
     try {
@@ -34,10 +35,11 @@ const handleClick = async () =>{
         if (data?.error){
             toast.error(data.error);
             setAd({...ad, loading: false});
-            Navigate("/dashboard")
+           
         }else{
             toast.success("Ad created successfully");
             setAd({...ad, loading: false});
+            navigate("/dashboard")
 
         }
     } catch (error) {
@@ -121,11 +123,11 @@ return (
  onChange={e => setAd({...ad, description:e.target.value})}
  />
  
- <button onClick ={handleClick} className="btn btn-primary"> Submit</button>
+ <button onClick ={handleClick} className={`btn btn-primary mb-5 ${ad.loading? "disabled": ""}`}> {ad.loading? "Saving...":"Submit"}</button>
 
 
  <pre>
-    {JSON.stringify(ad , null, 4)}
+  
  </pre>
     </>
     
