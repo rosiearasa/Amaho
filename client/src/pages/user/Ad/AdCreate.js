@@ -34,7 +34,7 @@ export default  function  AdCreate(){
             <div className="col-lg-6">
             <button onClick= {handleAddListing} 
             className="btn btn-primary btn-lg col-12 p-5">
-                <span className="h2">Add Listing</span>
+                <span className="h2">Sell</span>
                 </button>
             {sell &&
              (
