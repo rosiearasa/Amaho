@@ -1,7 +1,11 @@
 .active{
     color: white;
-    background-color:#1c4f79ce;
+    background-color:#7197b6ce;
 }
 .pointer{
     cursor: pointer;
+}
+.hoverable:hover{
+    transform: scale(1.01);
+    box-shadow: 0.4rem 0.4rem 1rem rgba(0,0,0,0.15) !important;
 }
